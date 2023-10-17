@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/38.72894628.chunk.js","mappings":"qKAWA,UATc,WACV,OACI,0BACI,mCAIX,C","sources":["pages/Login.jsx"],"sourcesContent":["import React from 'react';\n\nconst Login = () => {\n    return (\n        <div>\n            <h1>Login</h1>\n            {/* Тут ваша форма входу */}\n        </div>\n    );\n}\n\nexport default Login;"],"names":[],"sourceRoot":""}
