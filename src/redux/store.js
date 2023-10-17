@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { contactsReducer } from "./contactsSlice";
 import filterReducer from "./filterSlice";
+import authReducer from './authSlice';
 
 const persistConfig = {
     key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     contacts: contactsReducer,
     filter: filterReducer,
+    auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
