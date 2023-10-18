@@ -4,16 +4,18 @@ export const API = axios.create({
     baseURL: 'https://connections-api.herokuapp.com',
 });
 
-// Інтерцептор для додавання JWT токена до заголовків запиту
-API.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-});
+// Utility to add JWT
+export const setAuthHeader = token => {
+    API.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-const authAPI = {
+// Utility to remove JWT
+export const clearAuthHeader = () => {
+    API.defaults.headers.common.Authorization = '';
+};
+
+
+export const authAPI = {
     // Create a new user
     register: (userData) => API.post('/users/signup', userData),
 
@@ -27,7 +29,7 @@ const authAPI = {
     getCurrentUser: () => API.get('/users/current'),
 };
 
-const contactsAPI = {
+export const contactsAPI = {
     // Get all user contacts
     getAllContacts: () => API.get('/contacts'),
 
@@ -40,5 +42,3 @@ const contactsAPI = {
     // /contacts/{contactId}
     updateContact: (contactId, updatedData) => API.patch(`/contacts/${contactId}`, updatedData),
 };
-
-export { authAPI, contactsAPI };

@@ -4,12 +4,12 @@ import { authAPI } from "services/api";
 // Register
 export const register = createAsyncThunk(
     'auth/register',
-    async (userData, { rejectWithValue }) => {
+    async (credentials, thunkAPI) => {
         try {
-        const { data } = await authAPI.register(userData);
-        return data;
+            const res = await authAPI.register(credentials);
+            return res.data;
         } catch (error) {
-        return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
@@ -17,12 +17,12 @@ export const register = createAsyncThunk(
 // Login
 export const login = createAsyncThunk(
     'auth/login',
-    async (credentials, { rejectWithValue }) => {
+    async (credentials, thunkAPI) => {
         try {
-        const { data } = await authAPI.login(credentials);
-        return data;
+            const res = await authAPI.login(credentials);
+            return res.data;
         } catch (error) {
-        return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
@@ -30,24 +30,33 @@ export const login = createAsyncThunk(
 // Logout
 export const logout = createAsyncThunk(
     'auth/logout',
-    async (_, { rejectWithValue }) => {
+    async (_, thunkAPI) => {
         try {
-        await authAPI.logout();
+            await authAPI.logout();
         } catch (error) {
-        return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
 
 // Get current user
 export const getCurrentUser = createAsyncThunk(
-    'auth/getCurrentUser',
-    async (_, { rejectWithValue }) => {
+    'auth/getCurrent',
+    async (_, thunkAPI) => {
+        // Reading the token from the state via getState()
+        const state = thunkAPI.getState();
+        const persistedToken = state.auth.token;
+
+        if (persistedToken === null) {
+      // If there is no token, exit without performing any request
+        return thunkAPI.rejectWithValue('Unable to fetch user');
+        }
+
         try {
-        const { data } = await authAPI.getCurrentUser();
-        return data;
+            const res = await authAPI.getCurrentUser();
+            return res.data;
         } catch (error) {
-        return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );

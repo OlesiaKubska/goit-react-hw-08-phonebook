@@ -1,12 +1,13 @@
-import React from 'react';
+import { Helmet } from 'react-helmet';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
-const Register = () => {
+export default function Register() {
     return (
         <div>
-            <h1>Register</h1>
-            {/* Тут ваша форма реєстрації */}
+        <Helmet>
+            <title>Registration</title>
+        </Helmet>
+        <RegisterForm />
         </div>
     );
 }
-
-export default Register;
