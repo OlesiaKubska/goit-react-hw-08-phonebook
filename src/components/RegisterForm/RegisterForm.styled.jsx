@@ -12,8 +12,9 @@ export const StyledRegisterForm = styled.form`
 export const StyledLabel = styled.label`
     display: block;
     margin-bottom: 20px;
+    margin-right: 20px;
     font-size: 16px;
-    color: #333;
+    color: green;
 
     &:last-child {
         margin-bottom: 0;
@@ -25,7 +26,7 @@ export const StyledInput = styled.input`
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid green;
     border-radius: 5px;
     font-size: 16px;
 
@@ -41,14 +42,14 @@ export const StyledRegisterButton = styled.button`
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #0077ff;
+    background-color: green;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: #0055cc;
+        background-color: #3CB371;
     }
 
     &:disabled {

@@ -11,7 +11,7 @@ export const ContactListItem = styled.li`
     gap: 30px;
     align-items: center;
     padding: 8px;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid green;
 
     &:last-child {
         border-bottom: none;
@@ -20,12 +20,12 @@ export const ContactListItem = styled.li`
 
 export const DeleteButton = styled.button`
     padding: 4px 8px;
-    background-color: blue;
+    background-color: green;
     color: #fff;
     border: none;
     cursor: pointer;
 
     &:hover {
-        background-color:  #000080;
+        background-color:  white;
     }
 `;

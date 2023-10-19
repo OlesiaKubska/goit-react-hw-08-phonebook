@@ -10,7 +10,6 @@ import {
 
 export const Filter = () => {
     const filter = useSelector(selectFilter);
-    // console.log(filter);
     const dispatch = useDispatch();
 
     return (

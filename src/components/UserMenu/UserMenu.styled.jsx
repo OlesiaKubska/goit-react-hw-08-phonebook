@@ -8,13 +8,13 @@ export const UserMenuContainer = styled.div`
 
 export const WelcomeMessage = styled.p`
     font-size: 18px;
-    color: #333;
+    color: green;
     margin: 0;
 `;
 
 export const LogoutButton = styled.button`
     padding: 8px 15px;
-    background-color: #ff5c5c;
+    background-color: green;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -23,7 +23,7 @@ export const LogoutButton = styled.button`
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: #e53e3e;
+        background-color: #3CB371;
     }
 
     &:disabled {

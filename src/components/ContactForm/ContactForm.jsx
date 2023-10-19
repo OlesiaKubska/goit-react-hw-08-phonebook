@@ -11,7 +11,7 @@ import {
 } from './ContactForm.styled';
 
 export const ContactForm = () => {
-    const [formData, setFormData] = useState({ name: '', phone: '' });
+    const [formData, setFormData] = useState({ name: '', number: '' });
     const dispatch = useDispatch();
     const contacts = useSelector(selectAllContacts);
 
@@ -36,7 +36,7 @@ export const ContactForm = () => {
 
         dispatch(addContact(formData));
         
-        setFormData({ name: '', phone: '' });
+        setFormData({ name: '', number: '' });
     };
 
     return (
@@ -57,7 +57,7 @@ export const ContactForm = () => {
             </Label>
             <Label>
                 <span>
-                    Phone
+                    Number
                 </span>
                 <Input
                     type="tel"
@@ -65,7 +65,7 @@ export const ContactForm = () => {
                     pattern="\+?\d{1,4}?[.\-\s]?\(?\d{1,3}?\)?[.\-\s]?\d{1,4}[.\-\s]?\d{1,4}[.\-\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
-                    value={formData.phone}
+                    value={formData.number}
                     onChange={handleChange}
                 />
             </Label>
