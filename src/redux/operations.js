@@ -19,6 +19,7 @@ export const addContact = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const response = await contactsAPI.addContact(data);
+            // console.log(data);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);

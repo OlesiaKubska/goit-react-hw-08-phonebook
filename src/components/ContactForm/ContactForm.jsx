@@ -14,6 +14,7 @@ export const ContactForm = () => {
     const [formData, setFormData] = useState({ name: '', number: '' });
     const dispatch = useDispatch();
     const contacts = useSelector(selectAllContacts);
+    console.log(contacts);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -61,7 +62,7 @@ export const ContactForm = () => {
                 </span>
                 <Input
                     type="tel"
-                    name="phone"
+                    name="number"
                     pattern="\+?\d{1,4}?[.\-\s]?\(?\d{1,3}?\)?[.\-\s]?\d{1,4}[.\-\s]?\d{1,4}[.\-\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required

@@ -32,7 +32,7 @@ export const StyledInput = styled.input`
 
     &:focus {
         outline: none;
-        border-color: #0077ff;
+        border-color: #00FF7F;
     }
 `;
 

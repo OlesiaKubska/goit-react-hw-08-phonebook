@@ -17,28 +17,95 @@ export const clearAuthHeader = () => {
 
 export const authAPI = {
     // Create a new user
-    register: (userData) => API.post('/users/signup', userData),
+    register: async (credentials) => {
+        try {
+            const result = await API.post('/users/signup', credentials);
+            setAuthHeader(result.data.token);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // Login user
-    login: (credentials) => API.post('/users/login', credentials),
+    login: async (credentials) => {
+        try {
+            const result = await API.post('/users/login', credentials);
+            setAuthHeader(result.data.token);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // /users/logout
-    logout: () => API.post('/users/logout'),
+    logout: async () => {
+        try {
+            const result = await API.post('/users/logout');
+            clearAuthHeader();
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // Get information about the current user
-    getCurrentUser: () => API.get('/users/current'),
+    getCurrentUser: async () => {
+        try {
+            const result = await API.get('/users/current');
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 };
 
 export const contactsAPI = {
     // Get all user contacts
-    getAllContacts: () => API.get('/contacts'),
+    getAllContacts: async () => {
+        try {
+            const result = await API.get('/contacts');
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // Create a new contact
-    addContact: (contactData) => API.post('/contacts', contactData),
+    addContact: async (contactData) => {
+        try {
+            const result = await API.post('/contacts', contactData);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // Delete contact
-    deleteContact: (contactId) => API.delete(`/contacts/${contactId}`),
+    deleteContact: async (contactId) => {
+        try {
+            const result = await API.delete(`/contacts/${contactId}`);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 
     // /contacts/{contactId}
-    updateContact: (contactId, updatedData) => API.patch(`/contacts/${contactId}`, updatedData),
+    updateContact: async (contactId, updatedData) => {
+        try {
+            const result = await API.patch(`/contacts/${contactId}`, updatedData);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 };
