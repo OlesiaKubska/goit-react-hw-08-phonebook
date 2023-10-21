@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { authAPI } from "services/api";
+import { setAuthHeader } from "services/api";
 
 // Register
 export const register = createAsyncThunk(
@@ -53,6 +54,7 @@ export const getCurrentUser = createAsyncThunk(
         }
 
         try {
+            setAuthHeader(persistedToken);
             const res = await authAPI.getCurrentUser();
             return res.data;
         } catch (error) {
